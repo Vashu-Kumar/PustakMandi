@@ -32,29 +32,30 @@ const Books = () => {
         gap: '30px',
         justifyContent: 'center',
         marginTop: '30px',
-    };
-
+        padding: '0 20px'
+    }
     return (
         <div className="homepage py-1" style={containerStyle}>
             {books.map((book) => (
                 <Card
                     key={book._id}
                     sx={{
-                        width: 180,
-                        borderRadius: 2,
+                        width: 220,
+                        borderRadius: 3,
                         boxShadow: 3,
                         transition: 'transform 0.2s',
                         overflow: 'hidden',
                         '&:hover': {
                             transform: 'scale(1.05)',
                         }
+
                     }}
-                    onClick={() => navigate(`/book/${book._id}`)}
+                    onClick={() => navigate(`/PustakMandi/book/${book._id}`)}
                 >
-                    <CardActionArea>
+                    <CardActionArea sx={{height: '50%'}}>
                         <CardMedia
                             component="img"
-                            height="120"
+                            height='140'
                             image={`${IMAGE_URL}${book.imageURI}`}
                             alt={book.title}
                             sx={{ objectFit: 'cover' }}
@@ -75,6 +76,7 @@ const Books = () => {
             
             ))}
         </div>
+                       
     );
 }
 

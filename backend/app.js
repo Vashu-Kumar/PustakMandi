@@ -8,6 +8,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const authRoutes = require('./routes/authRoutes');
 const path = require('path');
 const ADMIN_URL = process.env.ADMIN_URL;
+const isAdmin = require('./middleware/isAdmin')
 
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(cors({
 
 
 app.use('/PustakMandi/api', userRoutes);
-app.use(ADMIN_URL, adminRoutes);
+app.use(ADMIN_URL, isAdmin, adminRoutes);
 app.use('/PustakMandi/api/auth',authRoutes);
 
 (async () => {

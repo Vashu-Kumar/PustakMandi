@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
-        <div className="pt-12 pb-30 min-h-screen    ">
+        <div className="pt-12 pb-30 min-h-screen bg-gray-900 text-white">
             <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-4xl text-black text-center font-bold mb-8   p-4 rounded-lg shadow-md">
+                <h2 className="text-4xl text-white text-center font-bold mb-8 p-4 rounded-lg shadow-md">
                     About Us
                 </h2>
 
@@ -19,7 +19,7 @@ const About = () => {
 
                 {/* Library History */}
                 <section className="  p-6 rounded-lg shadow-lg mb-12">
-                    <h3 className="text-3xl font-semibold mb-6 text-black text-center">
+                    <h3 className="text-3xl font-semibold mb-6 text-white text-center">
                         Our Story
                     </h3>
                     <p className=" ">
@@ -57,7 +57,7 @@ const About = () => {
                 {/* Library Services */}
                 <div className="grid md:grid-cols-2 gap-10 items-center p-2">
                     <div className="px-0 pt-5">
-                        <h3 className="text-3xl font-semibold text-black mb-6   p-4 rounded-lg shadow-md">
+                        <h3 className="text-3xl font-semibold text-white mb-6   p-4 rounded-lg shadow-md">
                             What We Offer
                         </h3>
                         <ul className="list-disc pl-6 text-lg     p-6 rounded-lg shadow-lg">
@@ -86,7 +86,7 @@ const About = () => {
 
                 {/* Membership Benefits */}
                 <section className="  p-6 rounded-lg shadow-lg mt-12">
-                    <h3 className="text-3xl font-semibold mb-6 text-black text-center">
+                    <h3 className="text-3xl font-semibold mb-6 text-white text-center">
                         Membership Benefits
                     </h3>
                     <p className="  text-center mb-4">
@@ -94,7 +94,7 @@ const About = () => {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="  p-6 rounded-lg shadow-md">
-                            <h4 className="font-semibold text-xl mb-3 text-black">
+                            <h4 className="font-semibold text-xl mb-3 text-white">
                                 Unlimited Book Borrowing
                             </h4>
                             <p className=" ">
@@ -102,7 +102,7 @@ const About = () => {
                             </p>
                         </div>
                         <div className="  p-6 rounded-lg shadow-md">
-                            <h4 className="font-semibold text-xl mb-3 text-black">
+                            <h4 className="font-semibold text-xl mb-3 text-white">
                                 Exclusive Member Events
                             </h4>
                             <p className=" ">
@@ -111,7 +111,7 @@ const About = () => {
                             </p>
                         </div>
                         <div className="  p-6 rounded-lg shadow-md">
-                            <h4 className="font-semibold text-xl mb-3 text-black">
+                            <h4 className="font-semibold text-xl mb-3 text-white">
                                 Discounted Book Purchases
                             </h4>
                             <p className=" ">
@@ -119,7 +119,7 @@ const About = () => {
                             </p>
                         </div>
                         <div className="  p-6 rounded-lg shadow-md">
-                            <h4 className="font-semibold text-xl mb-3 text-black">
+                            <h4 className="font-semibold text-xl mb-3 text-white">
                                 Priority Access to New Arrivals
                             </h4>
                             <p className=" ">
@@ -132,7 +132,7 @@ const About = () => {
 
                 {/* Call to Action */}
                 <section className="  p-6 rounded-lg shadow-lg mt-12 text-center">
-                    <h3 className="text-3xl font-semibold mb-6 text-black">
+                    <h3 className="text-3xl font-semibold mb-6 text-white">
                         Join Our Library Today
                     </h3>
                     <p className="  mb-6">

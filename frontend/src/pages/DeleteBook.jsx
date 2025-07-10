@@ -17,7 +17,13 @@ const DeleteBook = () => {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`${ADMIN_URL}/deleteBook/${encodeURIComponent(trimmedTitle)}`);
+            const token = localStorage.getItem('token');
+
+            await axios.delete(`${ADMIN_URL}/deleteBook/${encodeURIComponent(trimmedTitle)}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             alert(`Book "${trimmedTitle}" deleted successfully.`);
             setDeleteTitle('');
         } catch (error) {

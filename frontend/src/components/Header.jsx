@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -12,6 +12,9 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 
+
+import { gsap } from "gsap";
+
 const user = JSON.parse(localStorage.getItem('user'));
 
 
@@ -24,18 +27,58 @@ const Header = () => {
     const handleCloseNavMenu = () => setNavMenuAnchor(null);
     const handleOpenUserMenu = (event) => setUserMenuAnchor(event.currentTarget);
     const handleCloseUserMenu = () => setUserMenuAnchor(null);
-    
+
+    const navItems = useRef([]);
+    const userMenuItems = useRef([]);
+
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const timeLine = gsap.timeline({ defaults: { duration: 0.5, ease: 'power2.out' } });
+
+            timeLine.from(navItems.current, {
+                opacity: 0,
+                y: 30,
+                stagger: 0.2,
+            });
+        });
+        return () => ctx.revert(); // Clean up on unmount
+    }, []);
+
+    useLayoutEffect(() => {
+        if (!userMenuAnchor) return;
+
+        // Delay to ensure MUI <MenuItem> is rendered into the DOM
+        const id = setTimeout(() => {
+            const ctx = gsap.context(() => {
+                const timeLine = gsap.timeline({ defaults: { duration: 0.4, ease: 'power2.out' } });
+                timeLine.from(userMenuItems.current, {
+                    opacity: 0,
+                    x: 40,
+                    stagger: 0.15,
+                });
+            });
+
+            // Clean up context
+            return () => ctx.revert();
+        }, 50); // 50–100ms usually works well
+
+        return () => clearTimeout(id); // clean up timeout if menu closes too fast
+    }, [userMenuAnchor]);
+      
+
+
     const pages = [
         { label: 'Home', path: '/' },
         { label: 'Books', path: '/PustakMandi/books' },
         { label: 'About', path: '/PustakMandi/about' },
-        { label: 'Contact', path: '/PustakMandi/contact'},
+        { label: 'Contact', path: '/PustakMandi/contact' },
 
         ...(user
             ? [{ label: 'Profile', path: '/PustakMandi/profile' }]
             : [{ label: 'Login/Register', path: '/PustakMandi/login' }]
         ),
-          
+
         // Admin-only routes
         ...(user?.role === 'admin'
             ? [
@@ -43,12 +86,14 @@ const Header = () => {
                 { label: 'Delete Book', path: '/PustakMandi/deleteBook' },
             ]
             : [])
-        
+
     ];
+
+    // User settings
     const settings = ['Profile', 'Account', 'Logout'];
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#1B1212', color: '#fefefe' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: '#1B1212', color: '#fefefe' }}>
             <Toolbar>
                 {/* Logo */}
                 <img
@@ -85,14 +130,22 @@ const Header = () => {
                 </Box>
 
                 {/* Desktop Navigation */}
+
+
                 <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-                    {pages.map((page) => (
-                        <Button key={page.path} color="inherit" component={Link} to={page.path}>
+                    {pages.map((page, index) => (
+                        <Button
+                            key={page.path}
+                            color="inherit"
+                            component={Link}
+                            to={page.path}
+                            ref={(el) => (navItems.current[index] = el)}
+                        >
                             {page.label}
                         </Button>
                     ))}
-
                 </Box>
+
 
                 {/* User Settings */}
                 <Box sx={{ ml: 2 }}>
@@ -106,9 +159,10 @@ const Header = () => {
                         open={Boolean(userMenuAnchor)}
                         onClose={handleCloseUserMenu}
                     >
-                        {settings.map((setting) => (
+                        {settings.map((setting, index) => (
                             <MenuItem
                                 key={setting}
+                                ref={(el) => (userMenuItems.current[index] = el)}
                                 onClick={() => {
                                     handleCloseUserMenu();
 

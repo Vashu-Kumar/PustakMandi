@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const bookSchema = new mongoose.Schema({
     title : {
         type : String,
@@ -18,8 +19,14 @@ const bookSchema = new mongoose.Schema({
     },
     imageURI : {
         type : String,
+        default: "/uploads/sample_book.png"
+    }, 
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+
+    description : {
+        type : String,
         default : ''
-    },
+    }
 })
 
 module.exports = mongoose.model("Book", bookSchema);

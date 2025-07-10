@@ -5,14 +5,14 @@ const Book = require('../models/bookSchema.js');
 
 // Create a new book 
 router.post('/addBook', async (req, res) => {
-    const { title, author, genre, imageURI = '' } = req.body;
+    const { title, author, genre, imageURI = '', description } = req.body;
 
     if (!title || !author || !genre) {
         return res.status(400).json({ message: 'Title, Author, and Genre are required' });
     }
 
     try {
-        const newBook = new Book({ title, author, genre, status: 'available', imageURI });
+        const newBook = new Book({ title, author, genre, status: 'available', imageURI, description });
         await newBook.save();
         return res.status(201).json({ message: 'Book added', book: newBook });
     } catch (err) {
@@ -24,7 +24,7 @@ router.post('/addBook', async (req, res) => {
 // Delete a book by title
 router.delete('/deleteBook/:title', async (req, res) => {
     const { title } = req.params;
-
+    
     try {
         const allBooks = await Book.find();
         const match = allBooks.find(

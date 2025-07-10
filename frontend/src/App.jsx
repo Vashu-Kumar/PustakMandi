@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import BookDetail from './components/BookDetail';
 
 //Only for Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/PustakMandi/books" element={<Books />} />
+        <Route path="/PustakMandi/book/:id" element={<BookDetail />} />
         <Route path="/PustakMandi/about" element={<About />} />
         <Route path="/PustakMandi/contact" element={<Contact />} />
         <Route path="/PustakMandi/login" element={<Login />} />

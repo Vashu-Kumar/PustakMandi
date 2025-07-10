@@ -10,8 +10,8 @@ const AddBook = () => {
         title: '',
         author: '',
         genre: '',
-        status: '',
         imageURI: '',
+        description: ''
     });
 
     const handleChange = (e) => {
@@ -21,7 +21,7 @@ const AddBook = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, author, genre } = formData;
+        const { title, author, genre, description } = formData;
 
         if (!title || !author || !genre) {
             alert('Title, Author, and Genre are required!');
@@ -29,8 +29,16 @@ const AddBook = () => {
         }
 
         try {
-            const response = await axios.post(`${ADMIN_URL}/addBook`, formData, {
-            });
+            const token = localStorage.getItem('token');
+            const response = await axios.post(
+                `${ADMIN_URL}/addBook`,
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // 👈 Include the token
+                    },
+                }
+            );
 
             console.log("📘 Book added:", response.data);
             alert("Book added successfully!");
@@ -39,8 +47,8 @@ const AddBook = () => {
                 title: '',
                 author: '',
                 genre: '',
-                status: '',
                 imageURI: '',
+                description: ''
 
             });
 
@@ -52,11 +60,11 @@ const AddBook = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50 ">
+        <div className="flex justify-center items-center py-12 pb-28 min-h-screen bg-gray-50 ">
             <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
-                <h2 className="text-2xl font-bold mb-6 text-center">Add a New Book</h2>
+                <h2 className="text-2xl font-bold  text-center">Add a New Book</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {["title", "author", "genre", "status", "imageURI"].map((field) => (
+                    {["title", "author", "genre", "imageURI", "description"].map((field) => (
                         <div key={field}>
                             <label htmlFor={field} className="block text-sm font-medium text-gray-700 capitalize">
                                 {field === "imageURI" ? "Image URI" : field}

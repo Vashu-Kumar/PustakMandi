@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Home = () => {
     return (
-        <div className="">
+        <div className="bg-gray-900 text-white">
             {/* Hero Section with Background Image */}
             <section
                 className="relative bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center  "
