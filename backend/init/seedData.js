@@ -13,4 +13,8 @@ const seedData = async () => {
     }
 };
 
+<<<<<<< HEAD
 module.exports = seedData;
+=======
+module.exports = seedData;
+>>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
