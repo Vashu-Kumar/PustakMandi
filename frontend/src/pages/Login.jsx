@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const navigate = useNavigate(); // ✅ for navigation
-=======
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-
-const Login = () => {
-    const [credentials, setCredentials] = useState({ email: '', password: '' });
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCredentials(prev => ({ ...prev, [name]: value }));
     };
-<<<<<<< HEAD
-
-=======
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
     const handleLogin = async (evt) => {
         evt.preventDefault();
         try {
@@ -30,43 +17,24 @@ const Login = () => {
                 email: credentials.email,
                 password: credentials.password
             };
-<<<<<<< HEAD
 
             const response = await axios.post('http://localhost:8080/PustakMandi/api/auth/login', payload);
             const { token, user } = response.data;
 
             // ✅ Save token & user
-=======
-            //console.log('output',payload);
-
-            const response = await axios.post('http://localhost:8080/PustakMandi/api/auth/login', payload);
-
-            const { token, user } = response.data;
-
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
 
             alert(`Welcome back, ${user.username || user.name || 'user'}!`);
 
-<<<<<<< HEAD
             // ✅ Navigate to home page after successful login
             navigate('/PustakMandi/home');
 
         } catch (err) {
-=======
-            
-        } catch (err) {
-            //console.error('Login failed', err.response?.data || err.message);
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
             alert(err.response?.data?.message || 'Login failed. Please check your credentials.');
         }
     };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
     const styles = {
         container: {
             display: 'flex',
@@ -117,11 +85,7 @@ const Login = () => {
     };
 
     return (
-<<<<<<< HEAD
         <div style={styles.container}>
-=======
-        <div style={styles.container} >
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
             <form style={styles.form} onSubmit={handleLogin}>
                 <h2>Login</h2>
                 <input
@@ -142,11 +106,7 @@ const Login = () => {
                     required
                     style={styles.input}
                 />
-<<<<<<< HEAD
                 <button type="submit" style={styles.button}>Login</button>
-=======
-                <button onClick={handleLogin} type="submit" style={styles.button}>Login</button>
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
                 <div style={styles.link}>
                     New user?
                     <Link to="/PustakMandi/register" style={styles.linkAnchor}>Register here</Link>

@@ -60,11 +60,7 @@ const AddBook = () => {
     };
 
     return (
-<<<<<<< HEAD
         <div className="flex justify-center pt-12 items-center min-h-[80vh] bg-gray-50 ">
-=======
-        <div className="flex justify-center items-center py-12 pb-28 min-h-screen bg-gray-50 ">
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
             <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
                 <h2 className="text-2xl font-bold  text-center">Add a New Book</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">

@@ -33,11 +33,7 @@ const DeleteBook = () => {
     };
 
     return (
-<<<<<<< HEAD
         <div className="flex justify-center items-center min-h-[80vh] bg-gray-50 p-4">
-=======
-        <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
             <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center">Delete Book by Title</h3>
                 <div className="flex flex-col space-y-4">

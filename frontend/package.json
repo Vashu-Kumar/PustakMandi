@@ -18,18 +18,12 @@
     "@tailwindcss/vite": "^4.1.10",
     "axios": "^1.10.0",
     "gsap": "^3.13.0",
-<<<<<<< HEAD
     "lucide-react": "^0.552.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
     "swiper": "^12.0.3",
-=======
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.2",
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {

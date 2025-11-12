@@ -28,10 +28,3 @@ const isAdmin = async (req, res, next) => {
 }
 
 module.exports = isAdmin;
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> aea2970d30785cb3ad372155b984cc8132ea8a01
